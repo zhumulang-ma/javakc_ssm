@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javakc.ssm.modules.supplier.dao.SupplierDao">
+
+	<resultMap id="supplier" type="com.javakc.ssm.modules.supplier.entity.SupplierEntity">
+		<id property="id" column="id"></id>
+		<result property="supplierNumber" column="supplier_number"></result>
+		<result property="supplierPhone1" column="supplier_phone1"></result>
+		<result property="supplierName" column="supplier_name"></result>
+		<result property="supplyProducts" column="supply_products"></result>
+		<result property="supplierRegion" column="supplier_region"></result>
+		<result property="supplierAddress" column="supplier_address"></result>
+		<result property="updatedTime" column="updated_time"></result>
+	</resultMap>
+
+	<select id="findList" resultType="com.javakc.ssm.modules.supplier.entity.SupplierEntity" resultMap="supplier">
+          select id,supplier_number,supplier_phone1,supplier_name,supply_products,supplier_region,supplier_address,
+                 updated_time from supplier_management where 1=1
+	</select>
+
+	<insert id="insert">
+		insert into supplier_management(id,supplier_phone1,supplier_name,supply_products,supplier_starttime,
+		            supplier_phone2,supplier_region,supplier_address,supplier_note) values (#{id},
+		            #{supplierPhone1},#{supplierName},#{supplyProducts},#{supplierStarttime},#{supplierPhone2},#{supplierRegion},
+		            #{supplierAddress},#{supplierNote})
+	</insert>
+
+
+	
+</mapper>
